@@ -1,0 +1,10 @@
+*.spvchain
+log/*
+logs/*
+.classpath
+.project
+.settings
+target/*
+*.jpage
+*.wallet
+swarmvars.json

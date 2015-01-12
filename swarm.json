@@ -1,0 +1,31 @@
+{
+    "app_name": "prooof",
+    "services": [
+        {
+            "service_name": "prooof-service",
+            "components": [
+                {
+                    "component_name": "prooof-component",
+                    "image": "registry.giantswarm.io/bumi/prooof",
+                    "ports": [
+                        "4567"
+                    ],
+                    "env": [
+                        "BITCOIN_NETWORK=$bitcoin_network",
+                        "WALLET_PATH=/var/data/prooof/main.wallet",
+                        "ROOT_DIR=/var/data/prooof"
+                    ],
+                    "volumes": [
+                        {
+                            "path": "/var/data/prooof",
+                            "size": "6 GB"
+                        }
+                    ],
+                    "domains": {
+                        "prooof.gigantic.io": "4567"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+{
+  "bumi/dev": {
+    "bitcoin_network": "org.bitcoin.test"
+  }
+}
