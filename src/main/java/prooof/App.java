@@ -67,6 +67,17 @@ public class App {
             return "ping " + new java.util.Date().getTime();
         });
 
+        get("/api/wallet", (req, res) -> {
+            JSONObject wallet = new JSONObject();
+            wallet.put("freshReceiveAddress", treasury.wallet.freshReceiveAddress());
+            wallet.put("balance", treasury.wallet.getBalance().getValue());
+            wallet.put("balanceBtc", treasury.wallet.getBalance().toFriendlyString());
+            wallet.put("transactions", treasury.wallet.getTransactions(false).size());
+
+            res.type("application/json");
+            return wallet.toJSONString();
+        });
+
         post("/api/sign", (req, res) -> {
             String data = req.queryParams("data");
             String notificationUrl = req.queryParams("notification_url");
