@@ -64,7 +64,7 @@ public class App {
         });
 
         get("/", (req, res) -> {
-            return "ping " + new java.util.Date().getTime();
+            return "ping BestChainHeight=" + treasury.blockChain.getBestChainHeight() + " time=" + new java.util.Date().getTime();
         });
 
         get("/api/wallet", (req, res) -> {

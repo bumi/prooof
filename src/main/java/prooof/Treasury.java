@@ -33,7 +33,7 @@ public class Treasury {
     public Wallet wallet;
     private File chainFile;
     private SPVBlockStore chainStore;
-    private BlockChain blockChain;
+    public BlockChain blockChain;
     private PeerGroup peerGroup;
     public File walletFile;
     private boolean useLocalhost;
