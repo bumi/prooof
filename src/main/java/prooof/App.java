@@ -45,7 +45,7 @@ public class App {
         }
         logger.info("using root directory: " + rootDir);
 
-        String localhost = System.getenv("CONNECT_TO_LOCALHOST");
+        String localhost = System.getenv("USE_BITCOIND");
         boolean useLocalhost = localhost != null && localhost.equals("1");
 
         final Treasury treasury = new Treasury(environment, new File(rootDir), useLocalhost);

@@ -71,7 +71,7 @@ public class Treasury {
     }
 
     public void start() throws Exception {
-        if (this.useLocalhost) {
+        if (this.params.getId().equals(NetworkParameters.ID_REGTEST) || this.useLocalhost) {
             InetAddress localhost = InetAddress.getLocalHost();
             PeerAddress localPeer = new PeerAddress(localhost, this.params.getPort());
             this.peerGroup.addAddress(localPeer);
