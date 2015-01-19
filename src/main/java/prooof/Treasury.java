@@ -21,6 +21,7 @@ import org.bitcoinj.core.Wallet.SendRequest;
 import org.bitcoinj.net.discovery.DnsDiscovery;
 import org.bitcoinj.script.Script;
 import org.bitcoinj.script.ScriptBuilder;
+import org.bitcoinj.script.ScriptOpCodes;
 import org.bitcoinj.store.SPVBlockStore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -113,8 +114,10 @@ public class Treasury {
 
     public Wallet.SendRequest createAndPublishOpReturn(String data) throws InsufficientMoneyException {
         String opData = Treasury.opReturnIdentifier + data;
+        logger.info("createAndPublishOpReturn for: " + opData);
+
         Transaction tx = new Transaction(this.params);
-        Script script = ScriptBuilder.createOpReturnScript(opData.getBytes());
+        Script script = new ScriptBuilder().op(ScriptOpCodes.OP_RETURN).data(opData.getBytes()).build();
         tx.addOutput(Coin.ZERO, script);
         SendRequest req = Wallet.SendRequest.forTx(tx);
 
